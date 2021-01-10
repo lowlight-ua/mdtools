@@ -7,6 +7,10 @@ The following should not be treated as anchors:
 
 
 <a name=auctor mauris></a>
+
+
+# Donec: laoreet! Magna.
+
 [Only first word of the anchor should be matched. This link is OK](#auctor)
 
 
@@ -17,4 +21,11 @@ The following should not be treated as anchors:
 [Anchor not found. File is in directory down then up](../../rutrum/hendrerit.md#tempus)
 [Anchor not found. File is in directory down then up](#scelerisque) <- Not auto-fixable, because there are two options
 [Anchor not found. File is in root directory](#dolor) <- Not auto-fixable, because relative link exceeds "maximum directories down
+
+
+[Link to heading in this file. OK](#donec-laoreet-magna)
+
+
+[Anchor not found. Heading is in the file in directory above](ultricies/Neque.md#mauris-convallis-ornare)
+[Anchor not found. Heading is in the file in directory below](../Suspen disse.md#commodo-nisi-aliquet)
 
