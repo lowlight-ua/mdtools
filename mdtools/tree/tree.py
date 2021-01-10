@@ -8,7 +8,6 @@ from mdtools.tree.link import Link
 from mdtools.tree.file import File
 
 
-
 class MdTree:
     """Contains data about a markdown file tree."""
 
