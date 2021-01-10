@@ -4,6 +4,7 @@
 import os
 import shutil
 import tempfile
+import pytest
 
 from .compare_dirs import are_dir_trees_equal
 
@@ -15,18 +16,30 @@ dname = os.path.dirname(abspath)
 os.chdir(dname)
 
 
-def test_automatic(monkeypatch):
+@pytest.fixture
+def copy_input_tree_to_tmp_dir():
+    tmp_dir = tempfile.TemporaryDirectory()
+    tree_path = os.path.join(tmp_dir.name, 'tree')
+    shutil.copytree('./tree', tree_path)
+    return [tmp_dir, tree_path]
+
+
+def test_automatic_fix(copy_input_tree_to_tmp_dir, monkeypatch, capfd):
     """ Test the automatic mode of the linkcheck script by running it against a
     pre-built test tree, and comparing the output to the desired output.
     """
 
-    with tempfile.TemporaryDirectory() as tmpdir:
-        tree_dir = os.path.join(tmpdir, 'tree')
-        monkeypatch.setattr("sys.argv", ["pytest", "-a", tree_dir])
-        shutil.copytree('./tree', tree_dir)
+    tmp_dir = copy_input_tree_to_tmp_dir[0]
+    tree_path = copy_input_tree_to_tmp_dir[1]
+    monkeypatch.setattr("sys.argv", ["pytest", "-a", tree_path])
 
-        # Invole the script
-        linkcheck.main()
+    # Invole the script
+    linkcheck.main()
+    out, err = capfd.readouterr()
 
-        # Verify the result
-        assert are_dir_trees_equal(tree_dir, './tree_out')
+    #with open('out.txt', 'w') as f:
+    #    f.write(out)
+
+    # Verify the result
+    assert are_dir_trees_equal(tree_path, './tree_out')
+    tmp_dir.cleanup()
