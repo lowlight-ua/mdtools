@@ -2,7 +2,7 @@
 
 from pathlib import Path
 from mdtools.util import clr
-from mdtools.tree.tree import Link, Anchor
+from mdtools.model.tree import Link, Anchor
 
 
 class Issue:

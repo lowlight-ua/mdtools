@@ -7,7 +7,7 @@ from pathlib import Path
 
 from mdtools.util import clr
 from mdtools.issues import issues
-from mdtools.tree.tree import MdTree
+from mdtools.model.tree import Tree
 from mdtools.issues.fix import href, options, util, fuzzy
 from mdtools.issues.fix.patch import Patch, Patches
 
@@ -25,7 +25,7 @@ def __fuzzy_match(object_name: str,
 
 
 def __fix_a(issue: issues.LinkIssue,
-            tree: MdTree,
+            tree: Tree,
             object_name: str,
             object_index: Dict[str, List[Path]],
             patches: Patches) -> None:
@@ -59,7 +59,7 @@ def __fix_a(issue: issues.LinkIssue,
 
 
 def __fix_target_not_found_i(issue: issues.TargetNotFound,
-                            tree: MdTree,
+                            tree: Tree,
                             patches: Patches,
                             opt: options.Options) -> None:
     """Fix a `TargetNotFound` issue in interactive mode, if spossible."""
@@ -111,7 +111,7 @@ def __fix_target_not_found_i(issue: issues.TargetNotFound,
 
 
 def __fix_anchor_not_found_i(issue: issues.AnchorNotFound,
-                            tree: MdTree,
+                            tree: Tree,
                             patches: Patches,
                             opt: options.Options) -> None:
     """Fix an `AnchorNotFound` issue in interactive mode, if possible."""
@@ -167,7 +167,7 @@ def __fix_anchor_not_found_i(issue: issues.AnchorNotFound,
 
 
 @util.fixes(issues.TargetNotFound)
-def fix_target_not_found(issue: issues.TargetNotFound, tree: MdTree, patches: Patches,
+def fix_target_not_found(issue: issues.TargetNotFound, tree: Tree, patches: Patches,
                          opt: options.Options) -> None:
     """Fix a `TargetNotFound` issue. The result of this function's successful run is a patch
     added to `patches`.
@@ -183,7 +183,7 @@ def fix_target_not_found(issue: issues.TargetNotFound, tree: MdTree, patches: Pa
 
 
 @util.fixes(issues.AnchorNotFound)
-def fix_anchor_not_found(issue: issues.AnchorNotFound, tree: MdTree, patches: Patches,
+def fix_anchor_not_found(issue: issues.AnchorNotFound, tree: Tree, patches: Patches,
                          opt: options.Options) -> None:
     """Fix an `AnchorNotFound` issue. The result of this function's successful run is a patch
     added to `patches`.

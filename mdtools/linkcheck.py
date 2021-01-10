@@ -26,8 +26,8 @@ import getopt
 from pathlib import Path
 
 from mdtools import util
-from mdtools.tree.tree import MdTree
-from mdtools.tree import read_md_tree
+from mdtools.model.tree import Tree
+from mdtools.model import read_md_tree
 from mdtools.issues import analyze
 from mdtools.issues.fix.options import Options
 from mdtools.issues.fix import fix_all
@@ -88,7 +88,7 @@ def main():
     # -----------------------------------------------------------------------------
     # Doing the thing
 
-    tree = MdTree(root_dir)
+    tree = Tree(root_dir)
     read_md_tree(tree)
     issues = analyze(tree)
     fix_all(issues, tree, opt)

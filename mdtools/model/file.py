@@ -4,8 +4,8 @@
 from pathlib import Path
 from typing import List, Dict
 import marko # type: ignore
-from mdtools.tree.anchor import Anchor
-from mdtools.tree.link import Link
+from mdtools.model.anchor import Anchor
+from mdtools.model.link import Link
 
 
 class File:

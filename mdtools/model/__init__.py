@@ -8,7 +8,7 @@ from typing import Union, Tuple
 import marko # type: ignore
 from marko.md_renderer import MarkdownRenderer # type: ignore
 
-from mdtools.tree.tree import MdTree, Anchor, Link
+from mdtools.model.tree import Tree, Anchor, Link
 from mdtools import util
 
 ###############################################################################
@@ -23,26 +23,26 @@ rc_anchor = re.compile(RE_ANCHOR)
 ###############################################################################
 
 
-def __on_link(path: Path, tree: MdTree,
+def __on_link(path: Path, tree: Tree,
               marko_node: Union[marko.inline.Link, marko.inline.Image]) -> None:
     """Called when a link node is encountered in the AST."""
     tree.on_link(path, Link(marko_node))
 
-def __on_image(path: Path, tree: MdTree, marko_node: marko.inline.Image) -> None:
+def __on_image(path: Path, tree: Tree, marko_node: marko.inline.Image) -> None:
     """Called when an image node is encountered in the AST."""
     tree.on_link(path, Link(marko_node))
 
-def __on_inline_html(path: Path, tree: MdTree, html: str) -> None:
+def __on_inline_html(path: Path, tree: Tree, html: str) -> None:
     """Called when inline HTML is encountered in the AST."""
     match = rc_anchor.match(html)
     if match:
         tree.on_anchor(path, Anchor(html=html))
 
-def __on_heading(path: Path, tree: MdTree, text: str) -> None:
+def __on_heading(path: Path, tree: Tree, text: str) -> None:
     """Called when a heading node is encountered in the AST."""
     tree.on_heading_anchor(path, Anchor(heading=text))
 
-def __traverse_ast(path: Path, tree: MdTree, node) -> None:
+def __traverse_ast(path: Path, tree: Tree, node) -> None:
     """Recursively traverse the AST produced by Marko, and update the markdown tree model."""
 
     if isinstance(node, marko.inline.InlineHTML):
@@ -61,7 +61,7 @@ def __traverse_ast(path: Path, tree: MdTree, node) -> None:
             __traverse_ast(path, tree, child)
 
 
-def read_md_tree(tree: MdTree) -> None:
+def read_md_tree(tree: Tree) -> None:
     """Scan a markdown tree and populate the model."""
 
     def parse_markdown(path: Path): #  -> Tuple[marko, Document]:

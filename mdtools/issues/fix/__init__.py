@@ -4,14 +4,14 @@ from typing import List, Dict
 from pathlib import Path
 
 from mdtools.util import clr
-from mdtools.tree.tree import MdTree
+from mdtools.model.tree import Tree
 from mdtools.issues import issues
 from mdtools.issues.fix import link_issues   # do not remove: decorators run
 from mdtools.issues.fix.patch import Patches
 from mdtools.issues.fix import options
 
 
-def fix_all(all_issues: List[issues.Issue], tree: MdTree, opt: options.Options) -> None:
+def fix_all(all_issues: List[issues.Issue], tree: Tree, opt: options.Options) -> None:
     '''Print issues. If the mode implies fixing, and if there's a fixer available, invoke it.
     The fixer will work interactively or manually (depending on mode) and generate patches.
     The patches are applied at the end.

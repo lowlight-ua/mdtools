@@ -5,7 +5,7 @@ from dataclasses import dataclass
 from typing import List, Dict, Callable
 from pathlib import Path
 
-from mdtools.tree.tree import MdTree, File
+from mdtools.model.tree import Tree, File
 
 
 @dataclass
@@ -46,11 +46,11 @@ class PatchTarget:
 class Patches:
     """Describes all patches to be applied during this session."""
 
-    tree:    MdTree
+    tree:    Tree
     targets: Dict[Path, PatchTarget] = {}   # Patch targets
     empty:   bool       = True
 
-    def __init__(self, tree: MdTree):
+    def __init__(self, tree: Tree):
         self.tree = tree
 
     def add(self, patch: Patch) -> None:

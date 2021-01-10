@@ -3,12 +3,12 @@
 
 from typing import List, Dict
 from pathlib import Path
-from mdtools.tree.anchor import Anchor
-from mdtools.tree.link import Link
-from mdtools.tree.file import File
+from mdtools.model.anchor import Anchor
+from mdtools.model.link import Link
+from mdtools.model.file import File
 
 
-class MdTree:
+class Tree:
     """Contains data about a markdown file tree."""
 
     # Base path of the markdown tree.

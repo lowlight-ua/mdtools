@@ -6,11 +6,11 @@ from typing import List, Optional
 from pathlib import Path
 
 from mdtools.issues import issues
-from mdtools.tree.tree import MdTree, File, Link
+from mdtools.model.tree import Tree, File, Link
 from mdtools import util
 
 
-def analyze(md_tree: MdTree) -> List[issues.Issue]:
+def analyze(md_tree: Tree) -> List[issues.Issue]:
     """Scan the markdown tree and look for known issues."""
 
     out = []
