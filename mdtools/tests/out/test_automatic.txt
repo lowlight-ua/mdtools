@@ -1,0 +1,62 @@
+{{tmp_dir}}/purus/bibendum/feugiat.md
+   Target not found: ../bogus/root.md
+      -> ../../root.md
+{{tmp_dir}}/purus/bibendum/interdum/Duis/libero.md
+   Anchor not found: #lorem
+      -> ultricies/Neque.md#lorem
+   Anchor not found: #fusce
+      -> ultricies/placerat/porro.md#fusce
+   Anchor not found: #malesuada
+      -> ../Suspen disse.md#malesuada
+   Anchor not found: #vulpu tate
+      -> ../../feugiat.md#vulpu tate
+   Anchor not found: #tempus
+      -> ../../rutrum/hendrerit.md#tempus
+   Anchor not found: #scelerisque
+   Anchor not found: #dolor
+   Anchor not found: #mauris-convallis-ornare
+      -> ultricies/Neque.md#mauris-convallis-ornare
+   Anchor not found: #commodo-nisi-aliquet
+      -> ../Suspen disse.md#commodo-nisi-aliquet
+{{tmp_dir}}/purus/bibendum/interdum/Duis/Nullam.md
+   Target not found: Neque.md
+      -> ultricies/Neque.md
+   Target not found: porro.md
+      -> ultricies/placerat/porro.md
+   Target not found: Suspen disse.md
+      -> ../Suspen disse.md
+   Target not found: feugiat.md
+      -> ../../feugiat.md
+   Target not found: hendrerit.md
+      -> ../../rutrum/hendrerit.md
+   Target not found: root.md
+   Target not found: Aenean.md
+   Target not found: ../bogus/Neque.md
+      -> ultricies/Neque.md
+   Target not found: ../bogus/porro.md
+      -> ultricies/placerat/porro.md
+   Target not found: ../bogus/Suspen disse.md
+      -> ../Suspen disse.md
+   Target not found: ../bogus/feugiat.md
+      -> ../../feugiat.md
+   Target not found: ../bogus/hendrerit.md
+      -> ../../rutrum/hendrerit.md
+   Target not found: ../bogus/root.md
+   Target not found: ../bogus/Aenean.md
+   Target not found: ../../../../../../../../../../../../../../../../../../../../Neque.md
+      -> ultricies/Neque.md
+   Target not found: /fake/Neque.md
+      -> /purus/bibendum/interdum/Duis/ultricies/Neque.md
+   Target not found: /fake/porro.md
+      -> /purus/bibendum/interdum/Duis/ultricies/placerat/porro.md
+   Target not found: /fake/Suspen disse.md
+      -> /purus/bibendum/interdum/Suspen disse.md
+   Target not found: /fake/feugiat.md
+      -> /purus/bibendum/feugiat.md
+   Target not found: /fake/hendrerit.md
+      -> /purus/bibendum/rutrum/hendrerit.md
+   Target not found: /fake/root.md
+      -> /root.md
+   Target not found: /fake/Aenean.md
+Patching files...
+OK

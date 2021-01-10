@@ -35,11 +35,19 @@ def test_automatic_fix(copy_input_tree_to_tmp_dir, monkeypatch, capfd):
 
     # Invole the script
     linkcheck.main()
-    out, err = capfd.readouterr()
+    out, _ = capfd.readouterr()
 
     #with open('out.txt', 'w') as f:
     #    f.write(out)
 
-    # Verify the result
+    # Verify the resulting tree
     assert are_dir_trees_equal(tree_path, './tree_out')
     tmp_dir.cleanup()
+
+    # Verify script output
+    with open('out/test_automatic.txt') as f:
+        out_desired = f.read()
+    out_desired = out_desired.replace('{{tmp_dir}}', tree_path)
+    out = out.replace('\\', '/')
+    out_desired = out_desired.replace('\\', '/')
+    assert out_desired == out
