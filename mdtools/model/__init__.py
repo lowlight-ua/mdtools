@@ -88,8 +88,11 @@ def read_md_tree(tree: Tree) -> None:
 
             ext = Path(file_name).suffix
             if ext == '.md':
-                match, doc = parse_markdown(path)
-                the_file.marko = match
-                the_file.m_document = doc
+                try:
+                    match, doc = parse_markdown(path)
+                    the_file.marko = match
+                    the_file.m_document = doc
+                except:
+                    print(util.clr("RED") + "Parser error in: " +  str(path) + util.clr(""))
 
     tree.all_anchors = {**tree.anchors, **tree.h_anchors}
